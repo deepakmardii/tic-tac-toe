@@ -4,9 +4,35 @@ function App() {
   const [state, setState] = useState(Array(9).fill(null));
   const [curentTurn, setCurrentTurn] = useState("X");
 
+  const checkWinner = (state: any[]) => {
+    const win = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let i = 0; i < win.length; i++) {
+      const [a, b, c] = win[i];
+      if (state[a] !== null && state[a] === state[b] && state[a] === state[c])
+        return true;
+    }
+    return false;
+  };
+
   const handleBlockClick = (index: number) => {
     const stateCopy = Array.from(state);
     stateCopy[index] = curentTurn;
+
+    const win = checkWinner(stateCopy);
+    if (win) {
+      alert(`${curentTurn} won the game`);
+    }
+
     setCurrentTurn(curentTurn === "X" ? "O" : "X");
     setState(stateCopy);
   };

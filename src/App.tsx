@@ -26,6 +26,7 @@ function App() {
 
   const handleBlockClick = (index: number) => {
     const stateCopy = Array.from(state);
+    if (stateCopy[index] !== null) return;
     stateCopy[index] = curentTurn;
 
     const win = checkWinner(stateCopy);

@@ -5,9 +5,12 @@ function App() {
   const [curentTurn, setCurrentTurn] = useState("X");
 
   const handleBlockClick = (index: number) => {
-    console.log(index);
+    const stateCopy = Array.from(state);
+    stateCopy[index] = curentTurn;
+    setCurrentTurn(curentTurn === "X" ? "O" : "X");
+    setState(stateCopy);
   };
-  // console.log("state", state);
+  console.log("state", state);
   return (
     <>
       <div className="p-20 ">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Block from "./components/Block";
 function App() {
   const [state, setState] = useState(Array(9).fill(null));
@@ -37,6 +37,8 @@ function App() {
     setCurrentTurn(curentTurn === "X" ? "O" : "X");
     setState(stateCopy);
   };
+
+  useEffect(() => {}, []);
   console.log("state", state);
   return (
     <>
